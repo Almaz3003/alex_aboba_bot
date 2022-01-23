@@ -15,7 +15,7 @@ db_object = db_connection.cursor()
 
 
 def update_messages_count(user_id):
-    db_object.execute(f"UPDATE users SET messagers = messagers + 1 WHERE id = {user_id}")
+    db_object.execute(f"UPDATE users SET messages = messages + 1 WHERE id = {user_id}")
     db_connection.commit()
 
 
@@ -33,6 +33,7 @@ def start(message):
         db_connection.commit()
 
     update_messages_count(user_id)
+
 
 @bot.message_handler(func=lambda message: True, content_types=["text"])
 def message_from_user(message):
